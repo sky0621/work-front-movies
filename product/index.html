@@ -43,8 +43,10 @@
           <div id="content" class="row small-up-2 medium-up-3 large-up-4">
 
             <div v-for="movie in movies" class="column">
-              <img class="thumbnail" src="http://placehold.it/550x550">
-              <h5>{{ movie.photodatetime }}</h5>
+              <a href="vdo/{{ movie.filename }}">
+                <img class="thumbnail" src="img/{{ movie.filename }}.jpg">
+                <h5>{{ movie.photodatetime }}</h5>
+              </a>
             </div>
 
           </div>
@@ -58,7 +60,6 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
     <script>
       $(document).foundation();
 
