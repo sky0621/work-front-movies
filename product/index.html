@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Y Movie</title>
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  </head>
+  <body>
+
+    <div class="off-canvas-wrapper">
+
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+        <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+
+          <div class="row column">
+            <br>
+            <img class="thumbnail" src="img/p01.png">
+            <h5>sky0621</h5>
+            <p>web engineer.</p>
+          </div>
+
+        </div>
+
+        <div class="off-canvas-content" data-off-canvas-content>
+
+          <div class="title-bar hide-for-large">
+
+            <div class="title-bar-left" id="app">
+              <button class="menu-icon" type="button" data-open="my-info"></button>
+              <span class="title-bar-title">sky0621</span>
+            </div>
+          </div>
+
+          <div class="callout primary">
+            <div class="row column">
+              <h1>Y Movies</h1>
+              <p class="lead">Hello! This is my son's movies. Have fun!</p>
+            </div>
+          </div>
+
+          <div id="content" class="row small-up-2 medium-up-3 large-up-4">
+
+            <div v-for="movie in movies" class="column">
+              <img class="thumbnail" src="http://placehold.it/550x550">
+              <h5>{{ movie.photodatetime }}</h5>
+            </div>
+
+          </div>
+
+        </div><!-- off-canvas-content -->
+
+      </div><!-- off-canvas-wrapper-inner -->
+
+    </div><!-- off-canvas-wrapper -->
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    <script>
+      $(document).foundation();
+
+      var app = new Vue({
+        el: '#content',
+        data: {
+          movies: []
+        },
+        created: function(){
+          var self = this
+          $.getJSON("http://localhost:7010/movies/", function(json){
+            for(var i in json.movies){
+              self.movies.push(json.movies[i]);
+            }
+          });
+        },
+      })
+
+    </script>
+  </body>
+</html>
