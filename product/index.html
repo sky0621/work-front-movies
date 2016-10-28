@@ -70,7 +70,7 @@
         },
         created: function(){
           var self = this
-          $.getJSON("http://localhost:7010/movies/", function(json){
+          $.getJSON('/work-front-movies/api/', function(json){
             for(var i in json.movies){
               self.movies.push(json.movies[i]);
             }
